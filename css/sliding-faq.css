@@ -1,0 +1,28 @@
+/* CSS basics styles for our FAQs */
+
+.faq-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+.faq-list--title:hover {
+	opacity: .8;
+	cursor: pointer;
+}
+
+.faq-list--question {list-style-type: none;}
+
+.faq-list--question:before {
+	content: "▸"; display: inline-block; margin-right: 5px;
+	transition: all .2s ease-in-out;
+}
+.faq-list--question.faq-on:before {
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+.faq-list--answer {
+	margin: 10px 0; padding-left: 18px;
+	display: none;
+}
