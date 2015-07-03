@@ -3,7 +3,7 @@
 
 // Register Custom Post Type
 
-function faq_custom_posts() {
+function any_faq_custom_posts() {
 
 	$labels = array(
 		'name'                => _x( 'FAQ', 'Post Type General Name', 'sliding-faq' ),
@@ -43,4 +43,4 @@ function faq_custom_posts() {
 	register_post_type( 'faq-item', $args );
 
 }
-add_action( 'init', 'faq_custom_posts' );
+add_action( 'init', 'any_faq_custom_posts' );

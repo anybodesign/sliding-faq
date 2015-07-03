@@ -7,7 +7,7 @@
  * Author URI: http://anybodesign.com/
  */
 
-defined('ABSPATH') or die(); 
+defined('ABSPATH') or die('°_°’'); 
 
 
 
@@ -16,8 +16,8 @@ defined('ABSPATH') or die();
 --------------------------------------------- */
 
 
-define('SFAQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
-define('SFAQ_NAME', 'Sliding FAQ');
+define ('SFAQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
+define ('SFAQ_NAME', 'Sliding FAQ');
 define ('SFAQ_VERSION', '1.0');
 
 
@@ -31,10 +31,10 @@ require_once('any-sliding-faq-cpt.php');
 
 // Flush Rewrite
 
-register_activation_hook( __FILE__, 'faq_flush_rewrites' );
+register_activation_hook( __FILE__, 'any_faq_flush_rewrites' );
 
-function faq_flush_rewrites() {
-	faq_custom_posts();
+function any_faq_flush_rewrites() {
+	any_faq_custom_posts();
 	flush_rewrite_rules();
 }
 
@@ -55,7 +55,7 @@ load_plugin_textdomain( 'sliding-faq', false, basename( dirname( __FILE__ ) ) . 
 --------------------------------------------- */
 
 
-function add_faq_js() {
+function any_add_faq_js() {
     if (!is_admin()) {
 	
 	    wp_enqueue_script( 
@@ -67,7 +67,7 @@ function add_faq_js() {
 	    );
 	}
 }    
-add_action('wp_enqueue_scripts', 'add_faq_js');
+add_action('wp_enqueue_scripts', 'any_add_faq_js');
 
 
 
@@ -76,7 +76,7 @@ add_action('wp_enqueue_scripts', 'add_faq_js');
 --------------------------------------------- */
 
 
-function add_faq_css() {
+function any_add_faq_css() {
 	
 	wp_register_style(
 		'css-faq', 
@@ -87,7 +87,7 @@ function add_faq_css() {
 	);
 	wp_enqueue_style( 'css-faq' );
 }    
-add_action('wp_enqueue_scripts', 'add_faq_css');
+add_action('wp_enqueue_scripts', 'any_add_faq_css');
 
 
 
@@ -105,7 +105,7 @@ add_action('wp_enqueue_scripts', 'add_faq_css');
 --------------------------------------------- */
 
  
-function get_faq() { ?>
+function any_get_faq() { ?>
 
  
     <?php $faq_query = array(
@@ -143,16 +143,24 @@ function get_faq() { ?>
 --------------------------------------------- */ 
  
  
-function insert_faq($atts, $content=null) {
-	get_faq();
+function any_insert_faq() {
+
+	ob_start();
+		any_get_faq();
+	return ob_get_clean();
+	
 }
-add_shortcode('sliding_faq', 'insert_faq');
- 
+add_shortcode('sliding_faq', 'any_insert_faq');
+
  
 /* ------------------------------------------
 // FAQ Template tag  ------------------------
 --------------------------------------------- */ 
  
-function sliding_faq() { print get_faq(); }
+function any_sliding_faq() { 
+	
+	print any_get_faq(); 
+
+}
 
 
