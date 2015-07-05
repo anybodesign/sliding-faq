@@ -1,11 +1,28 @@
 <?php
-/**
- * Plugin Name: Sliding FAQ
- * Description: Create a nice FAQ section with sliding Q/A. 
- * Version: 1.0
- * Author: Thomas Villain - Anybodesign
- * Author URI: http://anybodesign.com/
- */
+/*
+Plugin Name: Sliding FAQ
+Description: Create a nice FAQ section with sliding Q/A. 
+Plugin URI: https://github.com/anybodesign/sliding-faq/
+Version: 1.0
+Author: Thomas Villain - Anybodesign
+Author URI: http://anybodesign.com/
+License: GPL2
+*/
+
+/*
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 2, as
+published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 
 defined('ABSPATH') or die('°_°’'); 
 
@@ -16,9 +33,9 @@ defined('ABSPATH') or die('°_°’');
 --------------------------------------------- */
 
 
-define ('SFAQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
-define ('SFAQ_NAME', 'Sliding FAQ');
-define ('SFAQ_VERSION', '1.0');
+define ('SLFQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
+define ('SLFQ_NAME', 'Sliding FAQ');
+define ('SLFQ_VERSION', '1.0');
 
 
 /* ------------------------------------------
@@ -31,10 +48,10 @@ require_once('any-sliding-faq-cpt.php');
 
 // Flush Rewrite
 
-register_activation_hook( __FILE__, 'any_faq_flush_rewrites' );
+register_activation_hook( __FILE__, 'any_slfq_flush_rewrites' );
 
-function any_faq_flush_rewrites() {
-	any_faq_custom_posts();
+function any_slfq_flush_rewrites() {
+	any_slfq_custom_posts();
 	flush_rewrite_rules();
 }
 
@@ -55,7 +72,7 @@ load_plugin_textdomain( 'sliding-faq', false, basename( dirname( __FILE__ ) ) . 
 --------------------------------------------- */
 
 
-function any_add_faq_js() {
+function any_slfq_add_js() {
     if (!is_admin()) {
 	
 	    wp_enqueue_script( 
@@ -67,7 +84,7 @@ function any_add_faq_js() {
 	    );
 	}
 }    
-add_action('wp_enqueue_scripts', 'any_add_faq_js');
+add_action('wp_enqueue_scripts', 'any_slfq_add_js');
 
 
 
@@ -76,7 +93,7 @@ add_action('wp_enqueue_scripts', 'any_add_faq_js');
 --------------------------------------------- */
 
 
-function any_add_faq_css() {
+function any_slfq_add_css() {
 	
 	wp_register_style(
 		'css-faq', 
@@ -87,7 +104,7 @@ function any_add_faq_css() {
 	);
 	wp_enqueue_style( 'css-faq' );
 }    
-add_action('wp_enqueue_scripts', 'any_add_faq_css');
+add_action('wp_enqueue_scripts', 'any_slfq_add_css');
 
 
 
@@ -95,6 +112,14 @@ add_action('wp_enqueue_scripts', 'any_add_faq_css');
 // Admin Options ----------------------------
 --------------------------------------------- */
  
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'any_slfq_plugin_settings_link' );
+
+function any_slfq_plugin_settings_link($links) {
+	 $mylinks = array(
+	 	'<a href="' . admin_url( 'edit.php?post_type=faq-item' ) . '">'.__('Create the FAQ','slick-slider').'</a>'
+	 );
+	return array_merge( $links, $mylinks );
+}
 
 // Nothing so far :)
 
@@ -105,11 +130,13 @@ add_action('wp_enqueue_scripts', 'any_add_faq_css');
 --------------------------------------------- */
 
  
-function any_get_faq() { ?>
+function any_slfq_get_faq() { ?>
 
  
     <?php $faq_query = array(
-	    'post_type' => 'faq-item'
+	    'post_type' => 'faq-item',
+	    'orderby' => 'name',
+   	    'order' => 'ASC',
     );
     $query = new WP_Query($faq_query); ?>
 
@@ -143,14 +170,14 @@ function any_get_faq() { ?>
 --------------------------------------------- */ 
  
  
-function any_insert_faq() {
+function any_slfq_insert_faq() {
 
 	ob_start();
-		any_get_faq();
+		any_slfq_get_faq();
 	return ob_get_clean();
 	
 }
-add_shortcode('sliding_faq', 'any_insert_faq');
+add_shortcode('sliding_faq', 'any_slfq_insert_faq');
 
  
 /* ------------------------------------------
@@ -159,7 +186,7 @@ add_shortcode('sliding_faq', 'any_insert_faq');
  
 function any_sliding_faq() { 
 	
-	print any_get_faq(); 
+	print any_slfq_get_faq(); 
 
 }
 
