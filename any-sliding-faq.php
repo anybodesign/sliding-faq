@@ -116,7 +116,7 @@ add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'any_slfq_plugin
 
 function any_slfq_plugin_settings_link($links) {
 	 $mylinks = array(
-	 	'<a href="' . admin_url( 'edit.php?post_type=faq-item' ) . '">'.__('Create the FAQ','slick-slider').'</a>'
+	 	'<a href="' . admin_url( 'edit.php?post_type=faq-item' ) . '">'.__('Create the FAQ','sliding-faq').'</a>'
 	 );
 	return array_merge( $links, $mylinks );
 }

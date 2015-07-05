@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Sliding FAQ 1.0\n"
-"POT-Creation-Date: 2015-05-28 11:36+0100\n"
-"PO-Revision-Date: 2015-05-28 11:36+0100\n"
+"POT-Creation-Date: 2015-07-06 00:37+0100\n"
+"PO-Revision-Date: 2015-07-06 00:37+0100\n"
 "Last-Translator: Thomas Villain <atelier@anybodesign.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -66,3 +66,7 @@ msgstr "faq"
 #: ../any-sliding-faq-cpt.php:25
 msgid "Here are the FAQs"
 msgstr "Voici les FAQs"
+
+#: ../any-sliding-faq.php:119
+msgid "Create the FAQ"
+msgstr "Créer les FAQs"
