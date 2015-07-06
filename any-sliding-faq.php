@@ -39,7 +39,7 @@ define ('SLFQ_VERSION', '1.0');
 
 
 /* ------------------------------------------
-// On activation -------------------------------
+// On activation ----------------------------
 --------------------------------------------- */
 
 // Require the Custom post type
@@ -121,7 +121,7 @@ function any_slfq_plugin_settings_link($links) {
 	return array_merge( $links, $mylinks );
 }
 
-// Nothing so far :)
+// Nothing else so far :)
 
 
 
