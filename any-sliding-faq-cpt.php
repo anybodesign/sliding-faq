@@ -24,7 +24,7 @@ function any_slfq_custom_posts() {
 		'label'               => __( 'faq', 'sliding-faq' ),
 		'description'         => __( 'Here are the FAQs', 'sliding-faq' ),
 		'labels'              => $labels,
-		'supports'            => array('title', 'editor', 'revisions'),
+		'supports'            => array('title', 'editor', 'revisions', 'page-attributes'),
 		'taxonomies'          => array(),
 		'hierarchical'        => false,
 		'public'              => true,

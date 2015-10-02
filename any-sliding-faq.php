@@ -135,7 +135,7 @@ function any_slfq_get_faq() { ?>
  
     <?php $faq_query = array(
 	    'post_type' => 'faq-item',
-	    'orderby' => 'name',
+	    'orderby' => 'menu_order',
    	    'order' => 'ASC',
     );
     $query = new WP_Query($faq_query); ?>
