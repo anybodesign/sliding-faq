@@ -3,7 +3,7 @@
 Plugin Name: Sliding FAQ
 Description: Create a nice FAQ section with sliding Q/A. 
 Plugin URI: https://github.com/anybodesign/sliding-faq/
-Version: 1.0
+Version: 1.1
 Author: Thomas Villain - Anybodesign
 Author URI: http://anybodesign.com/
 License: GPL2
