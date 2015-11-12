@@ -3,13 +3,15 @@
 Plugin Name: Sliding FAQ
 Description: Create a nice FAQ section with sliding Q/A. 
 Plugin URI: https://github.com/anybodesign/sliding-faq/
-Version: 1.1
+Version: 1.2
 Author: Thomas Villain - Anybodesign
 Author URI: http://anybodesign.com/
 License: GPL2
-*/
 
-/*
+Text Domain: sliding-faq
+Domain Path: /languages/
+
+	
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
 published by the Free Software Foundation.
@@ -35,7 +37,7 @@ defined('ABSPATH') or die('°_°’');
 
 define ('SLFQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
 define ('SLFQ_NAME', 'Sliding FAQ');
-define ('SLFQ_VERSION', '1.0');
+define ('SLFQ_VERSION', '1.2');
 
 
 /* ------------------------------------------
@@ -63,7 +65,11 @@ register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
 // i18n -------------------------------------
 --------------------------------------------- */
 
-load_plugin_textdomain( 'sliding-faq', false, basename( dirname( __FILE__ ) ) . '/languages' );
+load_plugin_textdomain( 
+	'sliding-faq', 
+	false, 
+	plugin_basename( dirname( __FILE__ ) ) . '/languages/'
+);
 
 
 

@@ -1,72 +1,107 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Sliding FAQ 1.0\n"
-"POT-Creation-Date: 2015-07-06 00:37+0100\n"
-"PO-Revision-Date: 2015-07-06 00:37+0100\n"
+"Project-Id-Version: Sliding FAQ\n"
+"POT-Creation-Date: 2015-11-12 09:51+0100\n"
+"PO-Revision-Date: 2015-11-12 09:54+0100\n"
 "Last-Translator: Thomas Villain <atelier@anybodesign.com>\n"
-"Language-Team: \n"
+"Language-Team: Thomas Villain <atelier@anybodesign.com>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.1\n"
-"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: any-sliding-faq.php\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Poedit-KeywordsList: _e;__\n"
-"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: ../any-sliding-faq-cpt.php:11
+#: any-sliding-faq-cpt.php:9
+msgctxt "Post Type General Name"
 msgid "FAQ"
 msgstr "FAQ"
 
-#: ../any-sliding-faq-cpt.php:12
+#: any-sliding-faq-cpt.php:10
+msgctxt "Post Type Singular Name"
+msgid "FAQ"
+msgstr "FAQ"
+
+#: any-sliding-faq-cpt.php:11
+msgid "FAQ"
+msgstr "FAQ"
+
+#: any-sliding-faq-cpt.php:12
 msgid "Parent FAQ:"
 msgstr "FAQ parente :"
 
-#: ../any-sliding-faq-cpt.php:13
+#: any-sliding-faq-cpt.php:13
 msgid "All FAQs"
 msgstr "Toutes les FAQs"
 
-#: ../any-sliding-faq-cpt.php:14
+#: any-sliding-faq-cpt.php:14
 msgid "View FAQ"
-msgstr "Voir FAQ"
+msgstr "Voir la FAQ"
 
-#: ../any-sliding-faq-cpt.php:15
+#: any-sliding-faq-cpt.php:15
 msgid "Add New FAQ"
 msgstr "Ajouter une FAQ"
 
-#: ../any-sliding-faq-cpt.php:16
+#: any-sliding-faq-cpt.php:16
 msgid "Add New"
 msgstr "Ajouter"
 
-#: ../any-sliding-faq-cpt.php:17
+#: any-sliding-faq-cpt.php:17
 msgid "Edit FAQ"
 msgstr "Modifier la FAQ"
 
-#: ../any-sliding-faq-cpt.php:18
+#: any-sliding-faq-cpt.php:18
 msgid "Update FAQ"
 msgstr "Mettre à jour la FAQ"
 
-#: ../any-sliding-faq-cpt.php:19
+#: any-sliding-faq-cpt.php:19
 msgid "Search FAQ"
 msgstr "Chercher une FAQ"
 
-#: ../any-sliding-faq-cpt.php:20
+#: any-sliding-faq-cpt.php:20
 msgid "Not found"
 msgstr "Introuvable"
 
-#: ../any-sliding-faq-cpt.php:21
+#: any-sliding-faq-cpt.php:21
 msgid "Not found in Trash"
-msgstr "Introuvable dans la corbeille"
+msgstr "Introuvable dans la corbeille\t"
 
-#: ../any-sliding-faq-cpt.php:24
+#: any-sliding-faq-cpt.php:24
 msgid "faq"
 msgstr "faq"
 
-#: ../any-sliding-faq-cpt.php:25
+#: any-sliding-faq-cpt.php:25
 msgid "Here are the FAQs"
 msgstr "Voici les FAQs"
 
-#: ../any-sliding-faq.php:119
+#: any-sliding-faq.php:125
 msgid "Create the FAQ"
 msgstr "Créer les FAQs"
+
+#. Plugin Name of the plugin/theme
+msgid "Sliding FAQ"
+msgstr "Sliding FAQ"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/anybodesign/sliding-faq/"
+msgstr "https://github.com/anybodesign/sliding-faq/"
+
+#. Description of the plugin/theme
+msgid "Create a nice FAQ section with sliding Q/A."
+msgstr "Créez une section FAQ sympa avec questions/réponses en accordéon."
+
+#. Author of the plugin/theme
+msgid "Thomas Villain - Anybodesign"
+msgstr "Thomas Villain - Anybodesign"
+
+#. Author URI of the plugin/theme
+msgid "http://anybodesign.com/"
+msgstr "http://anybodesign.com/"
