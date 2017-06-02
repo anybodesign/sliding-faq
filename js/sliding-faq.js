@@ -1,15 +1,17 @@
-jQuery(document).ready(function() {
+jQuery(document).ready(function($) {
 
-	jQuery('.faq-list--title').click(function() {
-		jQuery('.faq-list--question').removeClass('faq-on');
-		jQuery('.faq-list--answer').slideUp('normal');
+	$('.faq-list--title').on('click', function () {
+		
+		$('.faq-list--question').removeClass('faq-on');
+		$('.faq-list--answer').slideUp('normal').attr('aria-expanded','false');
    
-		if(jQuery(this).parent().find('.faq-list--answer').is(':hidden') == true) {
-			jQuery(this).parent().addClass('faq-on');
-			jQuery(this).parent().find('.faq-list--answer').slideDown('normal');
+		if($(this).parent().find('.faq-list--answer').is(':hidden') == true) {
+			$(this).parent().addClass('faq-on');
+			$(this).parent().find('.faq-list--answer').slideDown('normal').attr('aria-expanded','true');
 		} 
+		
 	 });
 	
-	jQuery('.faq-list--answer').hide();	
+	$('.faq-list--answer').hide().attr('aria-expanded','false');	
 	
 });

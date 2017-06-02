@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Sliding FAQ
+Plugin Name: AD Sliding FAQ
 Description: Create a nice FAQ section with sliding Q/A. 
 Plugin URI: https://github.com/anybodesign/sliding-faq/
-Version: 1.3
+Version: 1.4
 Author: Thomas Villain - Anybodesign
-Author URI: http://anybodesign.com/
+Author URI: https://anybodesign.com/
 License: GPL2
 
 Text Domain: sliding-faq
@@ -37,7 +37,7 @@ defined('ABSPATH') or die('°_°’');
 
 define ('SLFQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
 define ('SLFQ_NAME', 'Sliding FAQ');
-define ('SLFQ_VERSION', '1.3');
+define ('SLFQ_VERSION', '1.4');
 
 
 /* ------------------------------------------
@@ -154,7 +154,7 @@ function any_slfq_get_faq() { ?>
 	 	<?php while ($query->have_posts()) : $query->the_post(); ?> 
         
 	        <li class="faq-list--question">
-	        <span class="faq-list--title"><?php the_title(); ?></span>
+				<button class="faq-list--title"><?php the_title(); ?></button>
 				<div class="faq-list--answer">
 					<?php the_content(); ?>
 				</div>
