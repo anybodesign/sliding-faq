@@ -8,7 +8,7 @@ Author: Thomas Villain - Anybodesign
 Author URI: https://anybodesign.com/
 License: GPL2
 
-Text Domain: sliding-faq
+Text Domain: ad-sliding-faq
 Domain Path: /languages/
 
 	
@@ -66,7 +66,7 @@ register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
 --------------------------------------------- */
 
 load_plugin_textdomain( 
-	'sliding-faq', 
+	'ad-sliding-faq', 
 	false, 
 	plugin_basename( dirname( __FILE__ ) ) . '/languages/'
 );
@@ -195,5 +195,17 @@ function any_sliding_faq() {
 	print any_slfq_get_faq(); 
 
 }
+
+
+/* ------------------------------------------
+// Auto Update  -----------------------------
+--------------------------------------------- */ 
+
+require 'plugin-update-checker/plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://lab.anybodesign.com/dev/ad-sliding-faq/sliding-faq.json',
+	__FILE__,
+	'ad-sliding-faq'
+);
 
 
