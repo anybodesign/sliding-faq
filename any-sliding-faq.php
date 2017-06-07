@@ -37,7 +37,7 @@ defined('ABSPATH') or die('°_°’');
 
 define ('SLFQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
 define ('SLFQ_NAME', 'Sliding FAQ');
-define ('SLFQ_VERSION', '1.5');
+define ('SLFQ_VERSION', '1.4');
 
 
 /* ------------------------------------------
@@ -122,7 +122,7 @@ add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'any_slfq_plugin
 
 function any_slfq_plugin_settings_link($links) {
 	 $mylinks = array(
-	 	'<a href="' . admin_url( 'edit.php?post_type=faq-item' ) . '">'.__('Create the FAQ','sliding-faq').'</a>'
+	 	'<a href="' . admin_url( 'edit.php?post_type=faq-item' ) . '">'.__('Create the FAQ','ad-sliding-faq').'</a>'
 	 );
 	return array_merge( $links, $mylinks );
 }
