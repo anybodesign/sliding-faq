@@ -14,8 +14,9 @@ Download the zip archive and upload it to your WordPress site. Then activate the
 
 == Changelog ==
 
-= 1.5.5 - 2017-06-02 =
+= 1.6 - 2017-06-02 =
 * Auto-update via GitHub
+* Button styles
 
 = 1.5 - 2017-06-02 =
 * Auto-update

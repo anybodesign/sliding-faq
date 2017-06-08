@@ -6,11 +6,22 @@
 }
 
 .faq-list--title {
+	padding: 0 0 .25em 0;
+	margin: 0 0 .5em 0;
+	border-bottom: transparent 3px solid;
+	background-color: transparent;
+	color: #303030;
+	transition: border .2s ease-in-out;
 }
 
 .faq-list--title:hover,
-.faq-list--title:focus {
+.faq-list--title:focus,
+.faq-list--question.faq-on .faq-list--title {
 	opacity: .7;
+	padding: 0 0 .25em 0;
+	margin: 0 0 .5em 0;
+	border-bottom-color: #303030;
+	background-color: transparent;
 	cursor: pointer;
 }
 
