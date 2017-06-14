@@ -15,11 +15,11 @@ To display your FAQ, just add the shortcode `[sliding_faq]` in a post or a page,
 
 ### Changelog
 
-#### 1.6 - 2017-06-02
+#### 1.6 - 2017-06-08
 * Auto-update via GitHub
 * Button styles
 
-#### 1.5 - 2017-06-02 
+#### 1.5 - 2017-06-07 
 * Auto-update
 * Changelog
 * Text domain fix
