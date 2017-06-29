@@ -195,16 +195,3 @@ function any_sliding_faq() {
 	print any_slfq_get_faq(); 
 
 }
-
-
-/* ------------------------------------------
-// Auto Update  -----------------------------
---------------------------------------------- */ 
-
-require 'plugin-update-checker/plugin-update-checker.php';
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://github.com/anybodesign/sliding-faq',
-	__FILE__,
-	'sliding-faq'
-);
-$myUpdateChecker->setBranch('master');

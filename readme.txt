@@ -1,7 +1,7 @@
 === AD Sliding FAQ ===
 Contributors: anybodesign
 Requires at least: 4.0
-Tested up to: 4.7
+Tested up to: 4.8
 Stable tag: 4.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -13,6 +13,9 @@ Create a nice FAQ section with sliding Q/A.
 Download the zip archive and upload it to your WordPress site. Then activate the plugin, you will notice a new FAQ section in your dashboard. You can now start creating your FAQ!
 
 == Changelog ==
+
+= 1.6.5 - 2017-06-08 =
+* WP repository submission
 
 = 1.6 - 2017-06-08 =
 * Auto-update via GitHub
