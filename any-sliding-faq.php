@@ -3,7 +3,7 @@
 Plugin Name: AD Sliding FAQ
 Description: Create a nice FAQ section with sliding Q/A. 
 Plugin URI: https://github.com/anybodesign/sliding-faq/
-Version: 1.6
+Version: 1.6.5
 Author: Thomas Villain - Anybodesign
 Author URI: https://anybodesign.com/
 License: GPL2
@@ -37,7 +37,7 @@ defined('ABSPATH') or die('°_°’');
 
 define ('SLFQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
 define ('SLFQ_NAME', 'Sliding FAQ');
-define ('SLFQ_VERSION', '1.6');
+define ('SLFQ_VERSION', '1.6.5');
 
 
 /* ------------------------------------------
@@ -195,16 +195,3 @@ function any_sliding_faq() {
 	print any_slfq_get_faq(); 
 
 }
-
-
-/* ------------------------------------------
-// Auto Update  -----------------------------
---------------------------------------------- */ 
-
-require 'plugin-update-checker/plugin-update-checker.php';
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-	'https://github.com/anybodesign/sliding-faq',
-	__FILE__,
-	'sliding-faq'
-);
-$myUpdateChecker->setBranch('master');
