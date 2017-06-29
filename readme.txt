@@ -7,13 +7,20 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Create a nice FAQ section with sliding Q/A.
+Create a nice an accessible FAQ section with sliding Q/A.
 
 == Description ==
-AD Sliding FAQ creates a custom post type in order to create your FAQ. Once your FAQ posts are created you can add the FAQ in a page or a post with a shortcode, or in a template with a function.
+AD Sliding FAQ creates a custom post type in order to create your FAQ. Once your FAQ posts are created you can add the FAQ in a page or a post with a shortcode, or in a template with a function. This plugin has been created with accessibility in mind.
 
 == Installation ==
 Download the zip archive and upload it to your WordPress site. Then activate the plugin, you will notice a new FAQ section in your dashboard. You can now start creating your FAQ!
+
+== Frequently Asked Questions ==
+How can I display my FAQ?
+To display your FAQ, just add the shortcode [sliding_faq] in a post or a page!
+
+Can I use a function directly in one of my theme templates to display my FAQ?
+Sure, you can use the function  in your theme templates.
 
 == Screenshots ==
 1. FAQ List View
