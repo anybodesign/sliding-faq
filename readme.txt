@@ -1,18 +1,28 @@
 === AD Sliding FAQ ===
 Contributors: anybodesign
+Tags: FAQ
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 4.3
+Tested up to: 4.8
+Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Create a nice FAQ section with sliding Q/A.
 
-== Installation ==
+== Description ==
+AD Sliding FAQ creates a custom post type in order to create your FAQ. Once your FAQ posts are created you can add the FAQ in a page or a post with a shortcode, or in a template with a function.
 
+== Installation ==
 Download the zip archive and upload it to your WordPress site. Then activate the plugin, you will notice a new FAQ section in your dashboard. You can now start creating your FAQ!
 
+== Screenshots ==
+1. FAQ List View
+2. FAQ Editor View
+3. The FAQ on a page
+
 == Changelog ==
+= 1.6.5 - 2017-06-29 =
+* WP repository submission
 
 = 1.6 - 2017-06-08 =
 * Auto-update via GitHub
