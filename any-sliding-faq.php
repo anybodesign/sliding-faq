@@ -2,7 +2,6 @@
 /*
 Plugin Name: AD Sliding FAQ
 Description: Create a nice FAQ section with sliding Q/A. 
-Plugin URI: https://github.com/anybodesign/sliding-faq/
 Version: 1.6.5
 Author: Thomas Villain - Anybodesign
 Author URI: https://anybodesign.com/
