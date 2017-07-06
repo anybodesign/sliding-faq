@@ -135,7 +135,7 @@ function any_slfq_plugin_settings_link($links) {
 --------------------------------------------- */
 
  
-function any_slfq_get_faq($atts) { ?>
+function any_slfq_get_faq($o) { ?>
 
  
     <?php $faq_query = array(
@@ -147,25 +147,26 @@ function any_slfq_get_faq($atts) { ?>
 
     <?php if ($query->have_posts()) : ?>
 	
-	<?php echo $h['heading']; ?>
-	 	
- 	<div id="sliding_faq">
-	 	<ul class="faq-list">
-	 	
-	 	<?php 
-		 	$q = $a = 1;
-		 	while ($query->have_posts()) : $query->the_post(); ?>
-        
-	        <li class="faq-list--question">
-				<button class="faq-list--title" aria-controls="collapsible_<?php echo $q++; ?>" aria-expanded="false"><?php the_title(); ?></button>
-				<div class="faq-list--answer" id="collapsible_<?php echo $a++; ?>" aria-hidden="true">
-					<?php the_content(); ?>
-				</div>
-	        </li>     
-	    
-		<?php endwhile; ?> 
+ 	<div class="faq-list">
+
+	<?php 
+	 	$q = $a = 1;
+	 	while ($query->have_posts()) : $query->the_post(); ?>
+	   
+	    <div class="faq-list--item">
+	        
+	        <<?php echo $o['heading']; ?> class="faq-list--question">
+				<button class="faq-list--title" aria-controls="faq_<?php echo $q++; ?>" aria-expanded="false"><?php the_title(); ?></button>
+	        </<?php echo $o['heading']; ?>>     
+			
+			<div class="faq-list--answer" id="faq_<?php echo $a++; ?>" aria-hidden="true">
+				<?php the_content(); ?>
+			</div>
+			
+		</div>
+		
+	<?php endwhile; ?> 
  
-    	</ul>
     </div>
 	
 	<?php endif; wp_reset_query(); ?>
@@ -183,12 +184,16 @@ function any_slfq_insert_faq($atts) {
 
 	ob_start();
 	
-	$h = shortcode_atts( array(
+	// Shortcode Params
+	
+	$o = shortcode_atts( array(
         'heading' => 'h2'
     ), $atts );
 	
-	echo $h['heading'];
-	any_slfq_get_faq($atts);
+	
+	// Output
+	
+	any_slfq_get_faq($o);
 
 	return ob_get_clean();
 

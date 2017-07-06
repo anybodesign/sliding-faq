@@ -14,17 +14,28 @@ Create a nice and accessible accordion FAQ section with sliding Q/A.
 
 AD Sliding FAQ creates a custom post type in order to create your FAQ. Once your FAQ posts are created you can add the FAQ in a page or a post with a shortcode, or in a template with a function. This plugin has been created with accessibility in mind.
 
+= How To =
+
+To display your FAQ use the shortcode [sliding_faq] in a page or a post. By default, the output HTML for the questions is H2.
+If you want to have H3, just add the attribute *heading* to the shortcode, for example: [sliding_faq heading="h3"] 
+
+= Translations = 
+
+You can translate AD Sligin FAQ on [translate.wordpress.org](https://translate.wordpress.org). 
+
 
 == Installation ==
 
-Download the zip archive and upload it to your WordPress site. Then activate the plugin, you will notice a new FAQ section in your dashboard. You can now start creating your FAQ!
+* Download the zip archive and upload it to your WordPress site. 
+* Activate the plugin, then you will notice a new FAQ section in your dashboard. 
+* Start creating your FAQ!
 
 
 == Frequently Asked Questions ==
 
 = How can I display my FAQ? =
 
-To display your FAQ, just add the shortcode [sliding_faq] in a post or a page!
+To display your FAQ, just add the shortcode [sliding_faq] in a post or a page! Use the *heading* attribute to select the heading level, for example: [sliding_faq heading="h3"]
 
 = Can I use a function directly in one of my theme templates to display my FAQ? =
 
@@ -42,6 +53,7 @@ Sure, you can use the function `<?php any_slfq_get_faq(); ?>` in your theme temp
 
 = 1.7 - 2017-07-04 =
 * Accessibility improvements with aria-hidden and aria-controls attributes (thanks to Claire Bizingre)
+* SEO improvements with new HTML markup (headings)
 
 = 1.6.6 - 2017-07-02 =
 * French Translation Completed
@@ -77,4 +89,4 @@ Sure, you can use the function `<?php any_slfq_get_faq(); ?>` in your theme temp
 == Upgrade Notice ==
 
 = 1.7 =
-Accessibility improvements. 
+Accessibility and SEO improvements. 

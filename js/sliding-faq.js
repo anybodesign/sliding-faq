@@ -11,12 +11,12 @@ jQuery(document).ready(function($) {
 		
 		// if content is hidden
 		
-		if($(this).parent().find('.faq-list--answer').is(':hidden') == true) {
+		if($(this).parent().parent().find('.faq-list--answer').is(':hidden') == true) {
 			
 			// add class and show the content (and toggle aria-hidden)
 			
 			$(this).parent().addClass('faq-on');
-			$(this).parent().find('.faq-list--answer').slideDown('normal').attr('aria-hidden','false');
+			$(this).parent().parent().find('.faq-list--answer').slideDown('normal').attr('aria-hidden','false');
 			
 			// toggle aria-expanded on the button
 			
