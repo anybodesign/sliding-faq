@@ -2,16 +2,32 @@ jQuery(document).ready(function($) {
 
 	$('.faq-list--title').on('click', function () {
 		
+		// hide everything
+		
 		$('.faq-list--question').removeClass('faq-on');
-		$('.faq-list--answer').slideUp('normal').attr('aria-expanded','false');
-   
+		$('.faq-list--answer').slideUp('normal').attr('aria-hidden','true');
+		$(this).attr('aria-expanded','false');
+		
+		
+		// if content is hidden
+		
 		if($(this).parent().find('.faq-list--answer').is(':hidden') == true) {
+			
+			// add class and show the content (and toggle aria-hidden)
+			
 			$(this).parent().addClass('faq-on');
-			$(this).parent().find('.faq-list--answer').slideDown('normal').attr('aria-expanded','true');
+			$(this).parent().find('.faq-list--answer').slideDown('normal').attr('aria-hidden','false');
+			
+			// toggle aria-expanded on the button
+			
+			$('.faq-list--title').attr('aria-expanded','false');
+			$(this).attr('aria-expanded','true');
 		} 
 		
 	 });
 	
-	$('.faq-list--answer').hide().attr('aria-expanded','false');	
+	// hide the answers on load
+	
+	$('.faq-list--answer').hide();	
 	
 });

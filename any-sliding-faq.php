@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: AD Sliding FAQ
-Description: Create a nice FAQ section with sliding Q/A. 
-Version: 1.6.5
+Description: Create a nice and accessible FAQ section with sliding Q/A. 
+Version: 1.7
 Author: Thomas Villain - Anybodesign
 Author URI: https://anybodesign.com/
 License: GPL2
@@ -36,7 +36,7 @@ defined('ABSPATH') or die('°_°’');
 
 define ('SLFQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
 define ('SLFQ_NAME', 'Sliding FAQ');
-define ('SLFQ_VERSION', '1.6.5');
+define ('SLFQ_VERSION', '1.7');
 
 
 /* ------------------------------------------
@@ -135,7 +135,7 @@ function any_slfq_plugin_settings_link($links) {
 --------------------------------------------- */
 
  
-function any_slfq_get_faq() { ?>
+function any_slfq_get_faq($atts) { ?>
 
  
     <?php $faq_query = array(
@@ -146,15 +146,19 @@ function any_slfq_get_faq() { ?>
     $query = new WP_Query($faq_query); ?>
 
     <?php if ($query->have_posts()) : ?>
-
+	
+	<?php echo $h['heading']; ?>
+	 	
  	<div id="sliding_faq">
 	 	<ul class="faq-list">
-    
-	 	<?php while ($query->have_posts()) : $query->the_post(); ?> 
+	 	
+	 	<?php 
+		 	$q = $a = 1;
+		 	while ($query->have_posts()) : $query->the_post(); ?>
         
 	        <li class="faq-list--question">
-				<button class="faq-list--title"><?php the_title(); ?></button>
-				<div class="faq-list--answer">
+				<button class="faq-list--title" aria-controls="collapsible_<?php echo $q++; ?>" aria-expanded="false"><?php the_title(); ?></button>
+				<div class="faq-list--answer" id="collapsible_<?php echo $a++; ?>" aria-hidden="true">
 					<?php the_content(); ?>
 				</div>
 	        </li>     
@@ -175,14 +179,34 @@ function any_slfq_get_faq() { ?>
 --------------------------------------------- */ 
  
  
-function any_slfq_insert_faq() {
+function any_slfq_insert_faq($atts) {
 
 	ob_start();
-		any_slfq_get_faq();
-	return ob_get_clean();
 	
+	$h = shortcode_atts( array(
+        'heading' => 'h2'
+    ), $atts );
+	
+	echo $h['heading'];
+	any_slfq_get_faq($atts);
+
+	return ob_get_clean();
+
 }
 add_shortcode('sliding_faq', 'any_slfq_insert_faq');
+
+
+// [bartag foo="foo-value"]
+function bartag_func( $atts ) {
+    $a = shortcode_atts( array(
+        'foo' => 'something',
+        'bar' => 'something else',
+    ), $atts );
+
+    //return "foo = {$a['foo']}";
+    return "bar = {$a['bar']}" ;
+}
+add_shortcode( 'bartag', 'bartag_func' );
 
  
 /* ------------------------------------------
