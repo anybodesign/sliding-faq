@@ -35,7 +35,7 @@ defined('ABSPATH') or die('°_°’');
 
 
 define ('SLFQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
-define ('SLFQ_NAME', 'Sliding FAQ');
+define ('SLFQ_NAME', 'AD Sliding FAQ');
 define ('SLFQ_VERSION', '1.7');
 
 
@@ -77,7 +77,7 @@ load_plugin_textdomain(
 --------------------------------------------- */
 
 
-function any_slfq_add_js() {
+function ad_slfq_add_js() {
     if (!is_admin()) {
 	
 	    wp_enqueue_script( 
@@ -89,7 +89,7 @@ function any_slfq_add_js() {
 	    );
 	}
 }    
-add_action('wp_enqueue_scripts', 'any_slfq_add_js');
+add_action('wp_enqueue_scripts', 'ad_slfq_add_js');
 
 
 
@@ -98,18 +98,18 @@ add_action('wp_enqueue_scripts', 'any_slfq_add_js');
 --------------------------------------------- */
 
 
-function any_slfq_add_css() {
+function ad_slfq_add_css() {
 	
-	wp_register_style(
+	wp_enqueue_style(
 		'css-faq', 
 	    plugins_url( '/css/sliding-faq.css' , __FILE__ ),
 		array(), 
-		'1.0', 
-		false
+		'1.1', 
+	    'all'
 	);
-	wp_enqueue_style( 'css-faq' );
+
 }    
-add_action('wp_enqueue_scripts', 'any_slfq_add_css');
+add_action('wp_enqueue_scripts', 'ad_slfq_add_css');
 
 
 
@@ -117,9 +117,9 @@ add_action('wp_enqueue_scripts', 'any_slfq_add_css');
 // Admin Options ----------------------------
 --------------------------------------------- */
  
-add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'any_slfq_plugin_settings_link' );
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'ad_slfq_plugin_settings_link' );
 
-function any_slfq_plugin_settings_link($links) {
+function ad_slfq_plugin_settings_link($links) {
 	 $mylinks = array(
 	 	'<a href="' . admin_url( 'edit.php?post_type=faq-item' ) . '">'.__('Create the FAQ','ad-sliding-faq').'</a>'
 	 );
@@ -135,10 +135,18 @@ function any_slfq_plugin_settings_link($links) {
 --------------------------------------------- */
 
  
-function any_slfq_get_faq($o) { ?>
+function ad_slfq_get_faq($o) { ?>
 
  
-    <?php $faq_query = array(
+    <?php 
+	
+	// Atts
+	
+	$h = $o['heading'];
+	
+	// Query
+	
+	$faq_query = array(
 	    'post_type' => 'faq-item',
 	    'orderby' => 'menu_order',
    	    'order' => 'ASC',
@@ -150,14 +158,17 @@ function any_slfq_get_faq($o) { ?>
  	<div class="faq-list">
 
 	<?php 
-	 	$q = $a = 1;
-	 	while ($query->have_posts()) : $query->the_post(); ?>
+	
+	// Loop
+	
+ 	$q = $a = 1;
+ 	while ($query->have_posts()) : $query->the_post(); ?>
 	   
 	    <div class="faq-list--item">
 	        
-	        <<?php echo $o['heading']; ?> class="faq-list--question">
+	        <<?php echo $h; ?> class="faq-list--question">
 				<button class="faq-list--title" aria-controls="faq_<?php echo $q++; ?>" aria-expanded="false"><?php the_title(); ?></button>
-	        </<?php echo $o['heading']; ?>>     
+	        </<?php echo $h; ?>>     
 			
 			<div class="faq-list--answer" id="faq_<?php echo $a++; ?>" aria-hidden="true">
 				<?php the_content(); ?>
@@ -180,7 +191,7 @@ function any_slfq_get_faq($o) { ?>
 --------------------------------------------- */ 
  
  
-function any_slfq_insert_faq($atts) {
+function ad_slfq_insert_faq($atts) {
 
 	ob_start();
 	
@@ -193,33 +204,20 @@ function any_slfq_insert_faq($atts) {
 	
 	// Output
 	
-	any_slfq_get_faq($o);
+	ad_slfq_get_faq($o);
 
 	return ob_get_clean();
 
 }
-add_shortcode('sliding_faq', 'any_slfq_insert_faq');
+add_shortcode('sliding_faq', 'ad_slfq_insert_faq');
 
-
-// [bartag foo="foo-value"]
-function bartag_func( $atts ) {
-    $a = shortcode_atts( array(
-        'foo' => 'something',
-        'bar' => 'something else',
-    ), $atts );
-
-    //return "foo = {$a['foo']}";
-    return "bar = {$a['bar']}" ;
-}
-add_shortcode( 'bartag', 'bartag_func' );
 
  
 /* ------------------------------------------
 // FAQ Template tag  ------------------------
 --------------------------------------------- */ 
- 
-function any_sliding_faq() { 
-	
-	print any_slfq_get_faq(); 
 
+function sliding_faq($heading='h2') {
+    
+    echo do_shortcode('[sliding_faq heading="'.$heading.'"]');
 }

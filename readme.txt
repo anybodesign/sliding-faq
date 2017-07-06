@@ -14,14 +14,19 @@ Create a nice and accessible accordion FAQ section with sliding Q/A.
 
 AD Sliding FAQ creates a custom post type in order to create your FAQ. Once your FAQ posts are created you can add the FAQ in a page or a post with a shortcode, or in a template with a function. This plugin has been created with accessibility in mind.
 
-= How To =
+= How-To =
 
-To display your FAQ use the shortcode [sliding_faq] in a page or a post. By default, the output HTML for the questions is H2.
-If you want to have H3, just add the attribute *heading* to the shortcode, for example: [sliding_faq heading="h3"] 
+To display your FAQ use the shortcode [sliding_faq] in a page or a post. By default, the questions are wrapped inside a *H2* HTML tag.
+If you want to have *H3* instead, just add the attribute *heading* to the shortcode, for example: [sliding_faq heading="h3"] 
 
 = Translations = 
 
-You can translate AD Sligin FAQ on [translate.wordpress.org](https://translate.wordpress.org). 
+You can translate AD Sligin FAQ on [translate.wordpress.org](https://translate.wordpress.org).
+
+= To-Do = 
+
+* Add Taxonomy Support
+* Add Feature Image Support
 
 
 == Installation ==
@@ -39,7 +44,7 @@ To display your FAQ, just add the shortcode [sliding_faq] in a post or a page! U
 
 = Can I use a function directly in one of my theme templates to display my FAQ? =
 
-Sure, you can use the function `<?php any_slfq_get_faq(); ?>` in your theme templates.
+Sure, you can use the function `<?php sliding_faq(); ?>` in your theme templates. As for the shortcode, you can choose the heading level you want instead of *h2* for the questions, for example: `<?php sliding_faq('h3'); ?>`
 
 
 == Screenshots ==
@@ -51,9 +56,10 @@ Sure, you can use the function `<?php any_slfq_get_faq(); ?>` in your theme temp
 
 == Changelog ==
 
-= 1.7 - 2017-07-04 =
+= 1.7 - 2017-07-06 =
 * Accessibility improvements with aria-hidden and aria-controls attributes (thanks to Claire Bizingre)
 * SEO improvements with new HTML markup (headings)
+* Shortcode heading attribute
 
 = 1.6.6 - 2017-07-02 =
 * French Translation Completed
