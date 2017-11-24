@@ -148,6 +148,7 @@ function ad_slfq_get_faq($o) { ?>
 	
 	$faq_query = array(
 	    'post_type' => 'faq-item',
+	    'posts_per_page' => -1,
 	    'orderby' => 'menu_order',
    	    'order' => 'ASC',
     );

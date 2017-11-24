@@ -1,9 +1,9 @@
 === AD Sliding FAQ ===
 Contributors: anybodesign, bizingreclaire
-Tags: FAQ, Accordion
+Tags: faq, faq plugin, faqs, wordpress faq, frequently asked questions, accordion
 Requires at least: 4.0
-Tested up to: 4.8
-Stable tag: 1.7
+Tested up to: 4.9
+Stable tag: 1.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,10 @@ Sure, you can use the function `<?php sliding_faq(); ?>` in your theme templates
 
 
 == Changelog ==
+
+= 1.8 - 2017-11-24 =
+* Bugfix: output all the FAQs
+* WordPress 4.9 ready
 
 = 1.7 - 2017-07-06 =
 * Accessibility improvements with aria-hidden and aria-controls attributes (thanks to Claire Bizingre)
