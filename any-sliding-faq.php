@@ -2,7 +2,7 @@
 /*
 Plugin Name: AD Sliding FAQ
 Description: Create a nice and accessible FAQ section with sliding Q/A. 
-Version: 1.7
+Version: 1.9
 Author: Thomas Villain - Anybodesign
 Author URI: https://anybodesign.com/
 License: GPL2
@@ -36,7 +36,7 @@ defined('ABSPATH') or die('°_°’');
 
 define ('SLFQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
 define ('SLFQ_NAME', 'AD Sliding FAQ');
-define ('SLFQ_VERSION', '1.7');
+define ('SLFQ_VERSION', '1.9');
 
 
 /* ------------------------------------------

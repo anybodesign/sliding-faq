@@ -17,7 +17,7 @@ AD Sliding FAQ creates a custom post type in order to create your FAQ. Once your
 = How-To =
 
 To display your FAQ use the shortcode [sliding_faq] in a page or a post. By default, the questions are wrapped inside a *H2* HTML tag.
-If you want to have *H3* instead, just add the attribute *heading* to the shortcode, for example: [sliding_faq heading="h3"] 
+If you want to have *H3* instead, just add the attribute *heading* to the shortcode, for example: [sliding_faq heading='h3'] 
 
 = Translations = 
 
@@ -40,7 +40,7 @@ You can translate AD Sligin FAQ on [translate.wordpress.org](https://translate.w
 
 = How can I display my FAQ? =
 
-To display your FAQ, just add the shortcode [sliding_faq] in a post or a page! Use the *heading* attribute to select the heading level, for example: [sliding_faq heading="h3"]
+To display your FAQ, just add the shortcode [sliding_faq] in a post or a page! Use the *heading* attribute to select the heading level, for example: [sliding_faq heading='h3']
 
 = Can I use a function directly in one of my theme templates to display my FAQ? =
 
@@ -55,6 +55,9 @@ Sure, you can use the function `<?php sliding_faq(); ?>` in your theme templates
 
 
 == Changelog ==
+
+= 1.9 - 2018-03-28 =
+* Capabilities added
 
 = 1.8 - 2017-11-24 =
 * Bugfix: output all the FAQs
