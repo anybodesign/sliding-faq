@@ -1,44 +1,54 @@
-/* CSS basics styles for our FAQs */
+/* Simple CSS for our FAQ v1.1 */
 
-.faq-list {
-	list-style-type: none;
-	padding: 0;
+
+/* The FAQ Item */
+
+.faq-list--item {
+	position: relative;
+	margin-bottom: .5em;
 }
+
+/* The Questions - Heading */
+
+.faq-list--question {
+	margin-bottom: 0 !important;  /* Sorry, We have to override here :( */
+}
+.faq-list--question .faq-list--title::before {
+	content: "\25B8"; 
+	display: inline-block;
+	vertical-align: baseline; 
+	font-size: 135%;
+	margin-right: .25em;
+	transition: transform .2s ease-in-out;
+}
+.faq-list--question.faq-on .faq-list--title::before {
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+/* The Titles - Button */
 
 .faq-list--title {
 	padding: 0 0 .25em 0;
-	margin: 0 0 .5em 0;
+	margin: 0;
+	border-radius: 0;
 	border-bottom: transparent 3px solid;
 	background-color: transparent;
 	color: #303030;
 	transition: border .2s ease-in-out;
 }
-
 .faq-list--title:hover,
 .faq-list--title:focus,
 .faq-list--question.faq-on .faq-list--title {
 	opacity: .7;
 	padding: 0 0 .25em 0;
-	margin: 0 0 .5em 0;
+	margin: 0;
 	border-bottom-color: #303030;
 	background-color: transparent;
 	cursor: pointer;
 }
 
-.faq-list--question {
-	list-style-type: none;
-}
-
-.faq-list--question::before {
-	content: "▸"; 
-	display: inline-block; 
-	margin-right: .25em;
-	transition: transform .2s ease-in-out;
-}
-.faq-list--question.faq-on::before {
-	-webkit-transform: rotate(90deg);
-	transform: rotate(90deg);
-}
+/* The Answers */
 
 .faq-list--answer {
 	margin: .5em 0;
