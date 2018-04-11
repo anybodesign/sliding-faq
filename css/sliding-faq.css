@@ -13,13 +13,15 @@
 .faq-list--question {
 	margin-bottom: 0 !important;  /* Sorry, We have to override here :( */
 }
-.faq-list--question::before {
+.faq-list--question .faq-list--title::before {
 	content: "\25B8"; 
 	display: inline-block;
-	vertical-align: middle; 
+	vertical-align: baseline; 
+	font-size: 135%;
+	margin-right: .25em;
 	transition: transform .2s ease-in-out;
 }
-.faq-list--question.faq-on::before {
+.faq-list--question.faq-on .faq-list--title::before {
 	-webkit-transform: rotate(90deg);
 	transform: rotate(90deg);
 }
