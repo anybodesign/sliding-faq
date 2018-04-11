@@ -2,7 +2,7 @@
 /*
 Plugin Name: AD Sliding FAQ
 Description: Create a nice and accessible FAQ section with sliding Q/A. 
-Version: 1.9
+Version: 2.1
 Author: Thomas Villain - Anybodesign
 Author URI: https://anybodesign.com/
 License: GPL2
@@ -25,7 +25,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-defined('ABSPATH') or die('°_°’'); 
+defined('ABSPATH') or die(); 
 
 
 
@@ -36,7 +36,7 @@ defined('ABSPATH') or die('°_°’');
 
 define ('SLFQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
 define ('SLFQ_NAME', 'AD Sliding FAQ');
-define ('SLFQ_VERSION', '1.9');
+define ('SLFQ_VERSION', '2.0');
 
 
 /* ------------------------------------------
@@ -136,25 +136,52 @@ function ad_slfq_plugin_settings_link($links) {
 
  
 function ad_slfq_get_faq($o) { ?>
-
  
     <?php 
 	
 	// Atts
 	
 	$h = $o['heading'];
+	$t = $o['topic'];
+	
 	
 	// Query
 	
-	$faq_query = array(
-	    'post_type' => 'faq-item',
-	    'posts_per_page' => -1,
-	    'orderby' => 'menu_order',
-   	    'order' => 'ASC',
-    );
+	if ($t) {
+		
+		$faq_query = array(
+		    'post_type' => 'faq-item',
+		    'posts_per_page' => -1,
+		    'orderby' => 'menu_order',
+	   	    'order' => 'ASC',
+	
+			'tax_query' => array(
+				array(
+					'taxonomy' 	=> 'faq-topic',
+					'terms' 	=> $t,
+					'field' 	=> 'name',
+				),
+			),
+	   	    
+	    );
+	    
+	} else {
+		
+		$faq_query = array(
+		    'post_type' => 'faq-item',
+		    'posts_per_page' => -1,
+		    'orderby' => 'menu_order',
+	   	    'order' => 'ASC'
+	    );
+	}
     $query = new WP_Query($faq_query); ?>
 
-    <?php if ($query->have_posts()) : ?>
+
+    <?php
+	
+	// Output
+	    
+	if ($query->have_posts()) : ?>
 	
  	<div class="faq-list">
 
@@ -199,7 +226,8 @@ function ad_slfq_insert_faq($atts) {
 	// Shortcode Params
 	
 	$o = shortcode_atts( array(
-        'heading' => 'h2'
+        'heading' 	=> 'h2',
+        'topic'		=> null
     ), $atts );
 	
 	
@@ -218,7 +246,30 @@ add_shortcode('sliding_faq', 'ad_slfq_insert_faq');
 // FAQ Template tag  ------------------------
 --------------------------------------------- */ 
 
-function sliding_faq($heading='h2') {
+function sliding_faq($heading='h2', $topic=null) {
     
-    echo do_shortcode('[sliding_faq heading="'.$heading.'"]');
+    echo do_shortcode('[sliding_faq heading="'.$heading.'" topic="'.$topic.'"]');
 }
+
+
+/* ------------------------------------------
+// FAQ Roles  -------------------------------
+--------------------------------------------- */ 
+
+function ad_slfq_role() {
+	
+	$role = get_role('administrator');
+
+	$role->add_cap('edit_faq');
+	$role->add_cap('edit_others_faq');
+	$role->add_cap('publish_faq');
+	$role->add_cap('read_private_faq');
+	$role->add_cap('delete_faq');
+	$role->add_cap('delete_private_faq');
+	$role->add_cap('delete_published_faq');
+	$role->add_cap('delete_others_faq');
+	$role->add_cap('edit_private_faq');
+	$role->add_cap('edit_published_faq');
+}
+add_action('admin_init','ad_slfq_role');
+

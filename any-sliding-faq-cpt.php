@@ -9,7 +9,6 @@ function any_slfq_custom_posts() {
 		'name'					=> _x( 'FAQ', 'Post Type General Name', 'ad-sliding-faq' ),
 		'singular_name'			=> _x( 'FAQ', 'Post Type Singular Name', 'ad-sliding-faq' ),
 		'menu_name'				=> __( 'FAQ', 'ad-sliding-faq' ),
-		'parent_item_colon'		=> __( 'Parent FAQ:', 'ad-sliding-faq' ),
 		'all_items'				=> __( 'All FAQs', 'ad-sliding-faq' ),
 		'view_item'				=> __( 'View FAQ', 'ad-sliding-faq' ),
 		'add_new_item'			=> __( 'Add New FAQ', 'ad-sliding-faq' ),
@@ -32,6 +31,12 @@ function any_slfq_custom_posts() {
         'edit_private_posts'		=> 'edit_private_faq',
         'edit_published_posts'		=> 'edit_published_faq',
     );
+	$rewrite = array(
+		'slug'					=> 'faq-item',
+		'with_front'			=> true,
+		'pages'					=> true,
+		'feeds'					=> true,
+	);    
 	$args = array(
 		'label'					=> __( 'faq', 'ad-sliding-faq' ),
 		'description'			=> __( 'Here are the FAQs', 'ad-sliding-faq' ),
@@ -50,6 +55,7 @@ function any_slfq_custom_posts() {
 		'has_archive'			=> true,
 		'exclude_from_search'	=> false,
 		'publicly_queryable'	=> true,
+		//'rewrite'				=> $rewrite,
 		'capability_type'		=> 'post',
 		'capabilities'			=> $capabilities,
         'map_meta_cap'			=> true,
@@ -58,3 +64,36 @@ function any_slfq_custom_posts() {
 
 }
 add_action( 'init', 'any_slfq_custom_posts' );
+
+
+// Taxonomies
+
+function any_slfq_custom_taxonomies() {
+
+	$labels = array(
+		'name'							=> _x( 'FAQ Topics', 'Taxonomy General Name', 'ad-sliding-faq' ),
+		'singular_name'					=> _x( 'FAQ Topic', 'Taxonomy Singular Name', 'ad-sliding-faq' ),
+		'menu_name'						=> __( 'FAQ Topics', 'ad-sliding-faq' ),
+		'all_items'						=> __( 'All FAQ Topics', 'ad-sliding-faq' ),
+		'new_item_name'					=> __( 'New FAQ Topic', 'ad-sliding-faq' ),
+		'add_new_item'					=> __( 'Add New FAQ Topic', 'ad-sliding-faq' ),
+		'edit_item'						=> __( 'Edit FAQ Topic', 'ad-sliding-faq' ),
+		'update_item'					=> __( 'Update FAQ Topic', 'ad-sliding-faq' ),
+		'view_item'						=> __( 'View FAQ Topic', 'ad-sliding-faq' ),
+		'popular_items'					=> __( 'Popular FAQ Topic', 'ad-sliding-faq' ),
+		'search_items'					=> __( 'Search FAQ Topic', 'ad-sliding-faq' ),
+	);
+	$args = array(
+		'labels'				=> $labels,
+		'hierarchical'			=> false,
+		'public'				=> true,
+		'show_ui'				=> true,
+		'show_admin_column'		=> true,
+		'show_in_nav_menus'		=> true,
+		'show_tagcloud'			=> false,
+		'rewrite'				=> array( 'slug' => 'topic' ),		
+	);
+	register_taxonomy( 'faq-topic', array( 'faq-item' ), $args );	
+
+}
+add_action( 'init', 'any_slfq_custom_taxonomies', 0 );
