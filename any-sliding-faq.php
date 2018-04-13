@@ -144,6 +144,12 @@ function ad_slfq_get_faq($o) { ?>
 	$h = $o['heading'];
 	$t = $o['topic'];
 	
+	/**
+	 * make an array if several topic separated by comma is given
+	 */
+	if ( strpos( $t, ',' ) >= 0 ) {
+		$t = explode( ',', $t );
+	}
 	
 	// Query
 	
