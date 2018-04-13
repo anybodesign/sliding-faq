@@ -1,9 +1,9 @@
 === AD Sliding FAQ ===
-Contributors: anybodesign, bizingreclaire, thierrypigot
+Contributors: anybodesign, bizingreclaire, thierrypigot, sebastienthivinfocom
 Tags: faq, faq plugin, faqs, wordpress faq, frequently asked questions, accordion
 Requires at least: 4.0
 Tested up to: 4.9.5
-Stable tag: 2.1
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,7 @@ AD Sliding FAQ creates a custom post type in order to create your FAQ. Once your
 
 To display your FAQ use the shortcode [sliding_faq] in a page or a post. By default, the questions are wrapped inside a *H2* HTML tag.
 If you want to have *H3* instead, just add the attribute *heading* to the shortcode, for example: `[sliding_faq heading='h3']`.
-You can create different topics for your FAQ using the custom taxonomy *FAQ Topics*, this way you can display multiple FAQ. To do so, add the *topic* attribute to the shortcode with the name of you topic, for example: `[sliding_faq topic='Accessibility']`.
+You can create different topics for your FAQ using the custom taxonomy *FAQ Topics*, this way you can display multiple FAQ. To do so, add the *topic* attribute to the shortcode with the name of your topic(s), for example: `[sliding_faq topic='Accessibility, SEO']`.
 You can of course use both attributes: `[sliding_faq heading='h3' topic='Accessibility']`.
 
 = Translations = 
@@ -41,7 +41,7 @@ You can translate AD Sliding FAQ on [translate.wordpress.org](https://translate.
 
 = How can I display my FAQ? =
 
-To display your FAQ, just add the shortcode `[sliding_faq]` in a post or a page! Use the *heading* attribute to select the heading level, for example: `[sliding_faq heading='h3']`. Use the *topic* attribute to display multiple FAQ, for example: `[sliding_faq topic='Accessibility']`.
+To display your FAQ, just add the shortcode `[sliding_faq]` in a post or a page! Use the *heading* attribute to select the heading level, for example: `[sliding_faq heading='h3']`. Use the *topic* attribute to display multiple FAQ, for example: `[sliding_faq topic='Accessibility, SEO']`.
 
 = Can I use a function directly in one of my theme templates to display my FAQ? =
 
@@ -57,6 +57,9 @@ Sure, you can use the function `<?php sliding_faq(); ?>` in your theme templates
 
 
 == Changelog ==
+
+= 2.2 - 2018-04-13 =
+* Add the possibility to display several topics in one shortcode (thanks to Sébastien Serre)
 
 = 2.1 - 2018-04-04 =
 * A11y: Arrow sign on the button instead of the title
@@ -113,6 +116,9 @@ Sure, you can use the function `<?php sliding_faq(); ?>` in your theme templates
 
 
 == Upgrade Notice ==
+
+= 2.2 =
+Add possibility to display several topics in one shortcode
 
 = 1.7 =
 Accessibility and SEO improvements. 
