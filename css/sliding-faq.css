@@ -1,4 +1,4 @@
-/* Simple CSS for our FAQ v1.1 */
+/* Simple CSS for our FAQ v1.2 */
 
 
 /* The FAQ Item */
@@ -11,6 +11,7 @@
 /* The Questions - Heading */
 
 .faq-list--question {
+	display: block;
 	margin-bottom: 0 !important;  /* Sorry, We have to override here :( */
 }
 .faq-list--question .faq-list--title::before {
@@ -29,12 +30,15 @@
 /* The Titles - Button */
 
 .faq-list--title {
+	display: block;
+	width: 100%;
 	padding: 0 0 .25em 0;
 	margin: 0;
 	border-radius: 0;
 	border-bottom: transparent 3px solid;
 	background-color: transparent;
 	color: #303030;
+	text-align: left;
 	transition: border .2s ease-in-out;
 }
 .faq-list--title:hover,
@@ -46,6 +50,16 @@
 	border-bottom-color: #303030;
 	background-color: transparent;
 	cursor: pointer;
+}
+
+/* The featured image */
+
+.faq-list--question img {
+	display: inline-block;
+	vertical-align: middle; 
+	max-width: 3em;
+	height: auto;
+	margin-right: .5em;
 }
 
 /* The Answers */

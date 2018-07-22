@@ -143,7 +143,7 @@ function ad_slfq_get_faq($o) { ?>
 	
 	$h = $o['heading'];
 	$t = $o['topic'];
-	
+	$s = $o['size'];
 	
 	// Query
 	
@@ -203,7 +203,12 @@ function ad_slfq_get_faq($o) { ?>
 	    <div class="faq-list--item">
 	        
 	        <<?php echo $h; ?> class="faq-list--question">
-				<button class="faq-list--title" aria-controls="faq_<?php echo $q++; ?>" aria-expanded="false"><?php the_title(); ?></button>
+				<button class="faq-list--title" aria-controls="faq_<?php echo $q++; ?>" aria-expanded="false">
+				<?php if ( '' != get_the_post_thumbnail() ) {
+					the_post_thumbnail($s);
+				} ?>
+				<span><?php the_title(); ?></span>
+			</button>
 	        </<?php echo $h; ?>>     
 			
 			<div class="faq-list--answer" id="faq_<?php echo $a++; ?>" aria-hidden="true">
@@ -237,7 +242,8 @@ function ad_slfq_insert_faq($atts) {
 	
 	$o = shortcode_atts( array(
         'heading' 	=> 'h2',
-        'topic'		=> null
+        'topic'		=> null,
+        'size'		=> 'thumbnail'
     ), $atts );
 	
 	
@@ -256,9 +262,9 @@ add_shortcode('sliding_faq', 'ad_slfq_insert_faq');
 // FAQ Template tag  ------------------------
 --------------------------------------------- */ 
 
-function sliding_faq($heading='h2', $topic=null) {
+function sliding_faq($heading='h2', $topic=null, $size='thumbnail') {
     
-    echo do_shortcode('[sliding_faq heading="'.$heading.'" topic="'.$topic.'"]');
+    echo do_shortcode('[sliding_faq heading="'.$heading.'" topic="'.$topic.'" size="'.$size.'"]');
 }
 
 
