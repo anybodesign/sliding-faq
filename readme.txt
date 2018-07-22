@@ -2,8 +2,8 @@
 Contributors: anybodesign, bizingreclaire, thierrypigot, sebastienserre
 Tags: faq, faq plugin, faqs, wordpress faq, frequently asked questions, accordion
 Requires at least: 4.0
-Tested up to: 4.9.5
-Stable tag: 2.2
+Tested up to: 4.9.7
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,20 +14,25 @@ Create a nice and accessible accordion FAQ section with sliding Q/A.
 
 AD Sliding FAQ creates a custom post type in order to create your FAQ. Once your FAQ posts are created you can add the FAQ in a page or a post with a shortcode, or in a template with a function. This plugin has been created with accessibility in mind.
 
+
 = How-To =
 
 To display your FAQ use the shortcode [sliding_faq] in a page or a post. By default, the questions are wrapped inside a *H2* HTML tag.
 If you want to have *H3* instead, just add the attribute *heading* to the shortcode, for example: `[sliding_faq heading='h3']`.
 You can create different topics for your FAQ using the custom taxonomy *FAQ Topics*, this way you can display multiple FAQ. To do so, add the *topic* attribute to the shortcode with the name of your topic(s), for example: `[sliding_faq topic='Accessibility, SEO']`.
 You can of course use both attributes: `[sliding_faq heading='h3' topic='Accessibility']`.
+Featured images are now supported and the default size is 'thumbnail'. You can choose other dimensions size with the 'size' attribute: `[sliding_faq size='large']`. The attribute will support *thumbnail, medium, large* and *full* or any custom size. (Note that you'll have to customize the CSS if you want to display a large image.)
+
 
 = Translations = 
 
 You can translate AD Sliding FAQ on [translate.wordpress.org](https://translate.wordpress.org).
 
+
 = To-Do = 
 
-* Add Feature Image Support
+* Add Gutenberg Support
+* Add Widget Support
 
 
 == Installation ==
@@ -57,6 +62,11 @@ Sure, you can use the function `<?php sliding_faq(); ?>` in your theme templates
 
 
 == Changelog ==
+
+= 2.3 - 2018-07-22 =
+* Load JS only if the shortcode is on the page
+* Featured image support
+* CPT custom title and column
 
 = 2.2 - 2018-04-13 =
 * Add the possibility to display several topics in one shortcode (thanks to Sébastien Serre)
@@ -116,6 +126,9 @@ Sure, you can use the function `<?php sliding_faq(); ?>` in your theme templates
 
 
 == Upgrade Notice ==
+
+= 2.3 =
+Add the possibility to display a featured image, and only load the JS on the pages where the shortcode is inserted
 
 = 2.2 =
 Add possibility to display several topics in one shortcode
