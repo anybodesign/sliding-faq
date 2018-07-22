@@ -41,7 +41,7 @@ function any_slfq_custom_posts() {
 		'label'					=> __( 'faq', 'ad-sliding-faq' ),
 		'description'			=> __( 'Here are the FAQs', 'ad-sliding-faq' ),
 		'labels'				=> $labels,
-		'supports'				=> array('title', 'editor', 'revisions', 'page-attributes'),
+		'supports'				=> array('title', 'editor', 'revisions', 'page-attributes', 'thumbnail'),
 		'taxonomies'			=> array(),
 		'hierarchical'			=> false,
 		'public'				=> true,
@@ -97,3 +97,44 @@ function any_slfq_custom_taxonomies() {
 
 }
 add_action( 'init', 'any_slfq_custom_taxonomies', 0 );
+
+
+// Admin Columns
+
+function add_new_columns_faq( $wp_columns ) {
+	$column_before = array();
+	$column_after['picture'] = __('Picture','ad-sliding-faq');
+	$wp_columns = array_merge( $column_before, $wp_columns, $column_after );
+	//unset( $wp_columns['date'] );
+	return $wp_columns;
+}
+function manage_columns_faq( $column_name ) {
+	global $wpdb, $post;
+
+	switch( $column_name ) {
+		case 'picture':
+			if( has_post_thumbnail( $post->ID ) ){
+				echo get_the_post_thumbnail( $post->ID, array(60,60) );
+			}
+			break;
+		
+		default:
+			break;
+	}
+}
+add_filter( 'manage_edit-faq-item_columns', 'add_new_columns_faq' );
+add_filter( 'manage_faq-item_posts_custom_column', 'manage_columns_faq' );
+
+
+// Custom titles
+
+function change_title_text( $title ) {
+	$screen = get_current_screen();
+
+	if  ( 'faq-item' == $screen->post_type ) {
+		$title = __('Enter the question here','ad-sliding-faq');
+	}
+
+	return $title;
+}
+add_filter( 'enter_title_here', 'change_title_text' );
