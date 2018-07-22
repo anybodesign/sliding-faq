@@ -80,7 +80,7 @@ load_plugin_textdomain(
 function ad_slfq_add_js() {
     if (!is_admin()) {
 	
-	    wp_enqueue_script( 
+	    wp_register_script(
 	    	'js-faq', 
 	    	plugins_url( '/js/sliding-faq.js' , __FILE__ ),
 	    	array('jquery'), 
@@ -230,6 +230,8 @@ function ad_slfq_get_faq($o) { ?>
 function ad_slfq_insert_faq($atts) {
 
 	ob_start();
+
+	wp_enqueue_script('js-faq');
 	
 	// Shortcode Params
 	

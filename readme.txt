@@ -1,5 +1,5 @@
 === AD Sliding FAQ ===
-Contributors: anybodesign, bizingreclaire, thierrypigot, sebastienthivinfocom
+Contributors: anybodesign, bizingreclaire, thierrypigot, sebastienserre
 Tags: faq, faq plugin, faqs, wordpress faq, frequently asked questions, accordion
 Requires at least: 4.0
 Tested up to: 4.9.5
