@@ -2,8 +2,8 @@
 Contributors: anybodesign, bizingreclaire, thierrypigot, sebastienserre
 Tags: faq, faq plugin, faqs, wordpress faq, frequently asked questions, accordion
 Requires at least: 4.0
-Tested up to: 4.9.7
-Stable tag: 2.3
+Tested up to: 5.4
+Stable tag: 2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,7 +31,7 @@ You can translate AD Sliding FAQ on [translate.wordpress.org](https://translate.
 
 = To-Do = 
 
-* Add Gutenberg Support
+* Turn the shortcode to a block
 * Add Widget Support
 
 
@@ -62,6 +62,11 @@ Sure, you can use the function `<?php sliding_faq(); ?>` in your theme templates
 
 
 == Changelog ==
+
+= 2.4 - 2020-04-22 =
+* New editor support
+* Hierarchical topics
+* Bugfix: first faq output
 
 = 2.3 - 2018-07-22 =
 * Load JS only if the shortcode is on the page
