@@ -81,11 +81,11 @@ function ad_slfq_add_js() {
     if (!is_admin()) {
 	
 	    wp_register_script(
-	    	'js-faq', 
-	    	plugins_url( '/js/sliding-faq.js' , __FILE__ ),
-	    	array('jquery'), 
-	    	'1.0', 
-	    	true
+		    	'js-faq', 
+		    	plugins_url( '/js/sliding-faq.js' , __FILE__ ),
+		    	array('jquery'), 
+		    	'1.0', 
+		    	true
 	    );
 	}
 }    
@@ -158,10 +158,10 @@ function ad_slfq_get_faq($o) { ?>
 		}
 		
 		$faq_query = array(
-		    'post_type' => 'faq-item',
-		    'posts_per_page' => -1,
-		    'orderby' => 'menu_order',
-	   	    'order' => 'ASC',
+		    'post_type' 		=> 'faq-item',
+		    'posts_per_page' 	=> -1,
+		    'orderby' 			=> 'menu_order',
+	   	    'order' 			=> 'ASC',
 	
 			'tax_query' => array(
 				array(
@@ -176,10 +176,10 @@ function ad_slfq_get_faq($o) { ?>
 	} else {
 		
 		$faq_query = array(
-		    'post_type' => 'faq-item',
-		    'posts_per_page' => -1,
-		    'orderby' => 'menu_order',
-	   	    'order' => 'ASC'
+		    'post_type' 		=> 'faq-item',
+		    'posts_per_page' 	=> -1,
+		    'orderby' 			=> 'menu_order',
+	   	    'order' 			=> 'ASC'
 	    );
 	}
     $query = new WP_Query($faq_query); ?>

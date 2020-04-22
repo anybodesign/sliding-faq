@@ -4,7 +4,7 @@
 // Register Custom Post Type
 
 function any_slfq_custom_posts() {
-
+		
 	$labels = array(
 		'name'					=> _x( 'FAQ', 'Post Type General Name', 'ad-sliding-faq' ),
 		'singular_name'			=> _x( 'FAQ', 'Post Type Singular Name', 'ad-sliding-faq' ),
@@ -40,11 +40,11 @@ function any_slfq_custom_posts() {
 	$args = array(
 		'label'					=> __( 'faq', 'ad-sliding-faq' ),
 		'description'			=> __( 'Here are the FAQs', 'ad-sliding-faq' ),
-		'labels'				=> $labels,
+		'labels'					=> $labels,
 		'supports'				=> array('title', 'editor', 'revisions', 'page-attributes', 'thumbnail'),
-		'taxonomies'			=> array(),
+		'taxonomies'			=> array('faq-topic'),
 		'hierarchical'			=> false,
-		'public'				=> true,
+		'public'					=> true,
 		'show_ui'				=> true,
 		'show_in_menu'			=> true,
 		'show_in_nav_menus'		=> true,
@@ -52,13 +52,14 @@ function any_slfq_custom_posts() {
 		'menu_position'			=> 30,
 		'menu_icon'				=> 'dashicons-editor-help',
 		'can_export'			=> true,
-		'has_archive'			=> true,
+		'has_archive'			=> false,
 		'exclude_from_search'	=> false,
 		'publicly_queryable'	=> true,
 		//'rewrite'				=> $rewrite,
 		'capability_type'		=> 'post',
 		'capabilities'			=> $capabilities,
         'map_meta_cap'			=> true,
+        	'show_in_rest'			=> true
 	);
 	register_post_type( 'faq-item', $args );
 
@@ -84,14 +85,15 @@ function any_slfq_custom_taxonomies() {
 		'search_items'					=> __( 'Search FAQ Topic', 'ad-sliding-faq' ),
 	);
 	$args = array(
-		'labels'				=> $labels,
-		'hierarchical'			=> false,
-		'public'				=> true,
+		'labels'					=> $labels,
+		'hierarchical'			=> true,
+		'public'					=> true,
 		'show_ui'				=> true,
 		'show_admin_column'		=> true,
 		'show_in_nav_menus'		=> true,
 		'show_tagcloud'			=> false,
 		'rewrite'				=> array( 'slug' => 'topic' ),		
+		'show_in_rest'			=> true,
 	);
 	register_taxonomy( 'faq-topic', array( 'faq-item' ), $args );	
 
