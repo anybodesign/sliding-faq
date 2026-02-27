@@ -63,6 +63,9 @@ Sure, you can use the function `<?php sliding_faq(); ?>` in your theme templates
 
 == Changelog ==
 
+= 2.5 - 2026-02-27 =
+* Security fix (Thanks WP Assistance)
+
 = 2.4 - 2020-04-22 =
 * New editor support
 * Hierarchical topics
