@@ -2,7 +2,7 @@
 /*
 Plugin Name: AD Sliding FAQ
 Description: Create a nice and accessible FAQ section with sliding Q/A. 
-Version: 2.4
+Version: 2.5
 Author: Thomas Villain - Anybodesign
 Author URI: https://anybodesign.com/
 License: GPL2
@@ -36,7 +36,7 @@ defined('ABSPATH') or die();
 
 define ('SLFQ_PATH', WP_PLUGIN_URL . '/' . plugin_basename( dirname(__FILE__) ) . '/' );
 define ('SLFQ_NAME', 'AD Sliding FAQ');
-define ('SLFQ_VERSION', '2.4');
+define ('SLFQ_VERSION', '2.5');
 
 
 /* ------------------------------------------
@@ -141,9 +141,38 @@ function ad_slfq_get_faq($o) { ?>
 	
 	// Atts
 	
-	$h = $o['heading'];
-	$t = $o['topic'];
-	$s = $o['size'];
+	//$h = $o['heading'];
+	//$t = $o['topic'];
+	//$s = $o['size'];
+	
+	// H
+	$allowed_headings = array( 'h2', 'h3', 'h4', 'h5', 'h6' );
+	$h = isset($o['heading']) ? strtolower( trim( $o['heading'] ) ) : 'h3';
+	if ( ! in_array( $h, $allowed_headings, true ) ) {
+		$h = 'h3';
+	}
+	
+	// T
+	$t = isset($o['topic']) ? $o['topic'] : '';
+	
+	// S 
+	$s = isset($o['size']) ? $o['size'] : 'thumbnail';
+	
+	if ( is_string($s) ) {
+		$s = sanitize_key( $s );
+		$allowed_sizes = array_merge( get_intermediate_image_sizes(), array('thumbnail','medium','large','full') );
+		if ( ! in_array( $s, $allowed_sizes, true ) ) {
+			$s = 'thumbnail';
+		}
+	} elseif ( is_array($s) ) {
+		$s = array_map( 'absint', $s );
+		$s = array_values( $s );
+		if ( count($s) !== 2 || $s[0] <= 0 || $s[1] <= 0 ) {
+			$s = 'thumbnail';
+		}
+	} else {
+		$s = 'thumbnail';
+	}
 	
 	// Query
 	
@@ -153,8 +182,16 @@ function ad_slfq_get_faq($o) { ?>
 		 * make an array if several topic separated by comma is given
 		 */
 		
-		if ( strpos( $t, ',' ) >= 0 ) {
-			$t = explode( ',', $t );
+		if ( is_string($t) ) {
+			$t = trim($t);
+			if ( strpos( $t, ',' ) !== false ) {
+				$t = array_map( 'trim', explode( ',', $t ) );
+			}
+		}
+		if ( is_array($t) ) {
+			$t = array_filter( array_map( 'sanitize_title', $t ) );
+		} else {
+			$t = sanitize_title( $t );
 		}
 		
 		$faq_query = array(
@@ -162,12 +199,12 @@ function ad_slfq_get_faq($o) { ?>
 		    'posts_per_page' 	=> -1,
 		    'orderby' 			=> 'menu_order',
 	   	    'order' 			=> 'ASC',
-	
+			   
 			'tax_query' => array(
 				array(
-					'taxonomy' 	=> 'faq-topic',
-					'terms' 	=> $t,
-					'field' 	=> 'name',
+					'taxonomy' => 'faq-topic',
+					'terms'    => $t,
+					'field'    => 'slug',
 				),
 			),
 	   	    
@@ -221,7 +258,7 @@ function ad_slfq_get_faq($o) { ?>
  
     </div>
 	
-	<?php endif; wp_reset_query(); ?>
+	<?php endif; wp_reset_postdata(); ?>
 
  
 <?php }
